@@ -16,8 +16,12 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
+      - run: npm run build
       - run: npm test
-
+      - run: npm run build
+      - run: |
+             npm start
+             npx wait-on --timeout 60000
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
